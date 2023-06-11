@@ -1,0 +1,157 @@
+<nav class="mat-elevation-z8">
+
+  <mat-toolbar class="mat-elevation-z8 bg-whiter">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="mat-elevation-z5 bg-whiter text-primary">
+      <mat-icon class="material-icons">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a routerLink="/admin">
+        <button mat-menu-item>
+          <mat-icon class="material-icons">home_app_logo</mat-icon>
+          Admin
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="locations">
+        <mat-icon class="material-icons">pin_drop</mat-icon>
+        Manage Locations
+      </button>
+
+      <mat-menu #locations="matMenu">
+        <a routerLink="/admin/locations">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            Locations
+          </button>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a routerLink="/admin/locations/new-location">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            New Location
+          </button>
+        </a>
+
+      </mat-menu>
+
+
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="subscriptionsPlans">
+        <mat-icon class="material-icons">attach_money</mat-icon>
+        Manage Subscriptions Plans
+      </button>
+
+      <mat-menu #subscriptionsPlans="matMenu">
+        <a routerLink="/admin/subscription-plans">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            Subscriptions Plans
+          </button>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a routerLink="/admin/subscription-plans/new-subscription-plan">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            New Subscription Plan
+          </button>
+        </a>
+
+      </mat-menu>
+
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="invoices">
+        <mat-icon class="material-icons">hourglass_empty</mat-icon>
+        Manage Invoices
+      </button>
+
+      <mat-menu #invoices="matMenu">
+        <a routerLink="/admin/invoices">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            Invoices
+          </button>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a routerLink="/admin/invoices/new-invoice">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">arrow_forward</mat-icon>
+            Add Invoice
+          </button>
+        </a>
+
+      </mat-menu>
+
+      <mat-divider></mat-divider>
+      <button mat-menu-item [matMenuTriggerFor]="accounts">
+        <mat-icon class="material-icons">settings_suggest</mat-icon>
+        Manage Account
+      </button>
+
+      <mat-menu #accounts="matMenu">
+        <a routerLink="/selfcare/auth/signup" *ngIf="!accountEmail">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">account_circle</mat-icon>
+            Register
+          </button>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a routerLink="/selfcare/auth/signin" *ngIf="!accountEmail">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">lock_open</mat-icon>
+            Login
+          </button>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item *ngIf="accountEmail" (click)="isMyEmailCompromised()">
+          <mat-icon class="material-icons">security</mat-icon>
+          Is My Email Compromised?
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item (click)="logOutUser()" *ngIf="accountEmail">
+          <mat-icon class="material-icons">lock</mat-icon>
+          Logout
+        </button>
+
+
+
+      </mat-menu>
+
+      <mat-divider></mat-divider>
+
+      <h4 class="pr-3" *ngIf="accountEmail">Logged in as: <span class="text-warn">{{ accountEmail }}</span></h4>
+      <h4 class="pr-3" *ngIf="!accountEmail">Not Logged in. <a routerLink="/admin/auth/signin">Login to Continue</a></h4>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/admin/users">
+          <button mat-menu-item>
+            <mat-icon class="material-icons">group</mat-icon>
+            users
+          </button>
+        </a>
+      <mat-divider></mat-divider>
+       <a routerLink="/">
+        <button mat-menu-item>
+          <mat-icon class="material-icons">exit_to_app</mat-icon>
+          Web
+        </button>
+      </a>
+
+
+    </mat-menu>
+    <h1 class="centered text-primary">{{ title }}</h1>
+  </mat-toolbar>
+</nav>

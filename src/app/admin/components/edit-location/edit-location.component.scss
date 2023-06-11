@@ -1,0 +1,14 @@
+#map {
+  position:absolute !important;
+  right: 0;
+  bottom: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.btn-close {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  z-index:99999;
+}
