@@ -33,13 +33,12 @@ All this links Use Pangea API:
 [Selfcare SignIN](https://healus-assurance.web.app/#/selfcare/auth/signin),
 [Selfcare Reset Password](https://healus-assurance.web.app/#/selfcare/auth/reset-password),
 [Selfcare Logout](https://healus-assurance.web.app/#/selfcare),
-
 [Admin SignUP](https://healus-assurance.web.app/#/admin/auth/signup),
 [Admin SignIN](https://healus-assurance.web.app/#/admin/auth/signin),
 [Admin Reset Password](https://healus-assurance.web.app/#/admin/auth/reset-password),
 [Admin Logout](https://healus-assurance.web.app/#/admin)
 
-90% of [Healus Admin](https://healus-assurance.web.app/#/admin) actions are saved using [Pangea Secure Audit log](https://pangea.cloud/docs/api/audit).
+96% of [Healus Admin](https://healus-assurance.web.app/#/admin) actions are saved using [Pangea Secure Audit log](https://pangea.cloud/docs/api/audit),
 and also when a customer subscribes to a package its logged as well.
 
 Also both Customers and admin users can now use [Pangea User Intel](https://pangea.cloud/docs/api/user-intel) to find out if their email addresses have been exposed to any security breach
