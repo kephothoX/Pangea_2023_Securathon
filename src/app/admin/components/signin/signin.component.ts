@@ -28,13 +28,13 @@ import {
 })
 export class SigninComponent implements OnInit {
   firebaseConfig = {
-    apiKey: "AIzaSyB7iz6BtSLWdQGuB3QiM1CqMfp0UXdC1Qg",
+    apiKey: "**********************************",
     authDomain: "healus-assurance.firebaseapp.com",
     projectId: "healus-assurance",
     storageBucket: "healus-assurance.appspot.com",
-    messagingSenderId: "524863053491",
-    appId: "1:524863053491:web:5e3680bedf17de1ef0dac6",
-    measurementId: "G-CJVBDMRP07"
+    messagingSenderId: "*********************",
+    appId: "********************************",
+    measurementId: "***********************"
   };
 
   app = initializeApp(this.firebaseConfig);
@@ -80,7 +80,7 @@ export class SigninComponent implements OnInit {
     if (element) {
       // @ts-ignore
       google.accounts.id.initialize({
-        client_id: '630879666344-14rl98ful5m0ln3vvivhc5ffa8r2seu7.apps.googleusercontent.com',
+        client_id: '****************************.apps.googleusercontent.com',
         callback: this.googleSignInResponse.bind(this),
         auto_select: false,
         cancel_on_tap_outside: true,
