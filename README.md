@@ -29,14 +29,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Pangea API Use
 The Whole Authentiation and Authorization is build around [Pangea Authn API ](https://pangea.cloud/docs/api/authn) that is When Signup as Square Customer we use the same Profile for [Pangea Authn API Sign up ](https://pangea.cloud/docs/api/authn).
 All this links Use Pangea API:
-[Selfcare SignUP](https://healus-assurance.web.app/#/selfcare/auth/signup)
-[Selfcare SignIN](https://healus-assurance.web.app/#/selfcare/auth/signin)
-[Selfcare Reset Password](https://healus-assurance.web.app/#/selfcare/auth/reset-password)
-[Selfcare Logout](https://healus-assurance.web.app/#/selfcare)
+[Selfcare SignUP](https://healus-assurance.web.app/#/selfcare/auth/signup),
+[Selfcare SignIN](https://healus-assurance.web.app/#/selfcare/auth/signin),
+[Selfcare Reset Password](https://healus-assurance.web.app/#/selfcare/auth/reset-password),
+[Selfcare Logout](https://healus-assurance.web.app/#/selfcare),
 
-[Admin SignUP](https://healus-assurance.web.app/#/admin/auth/signup)
-[Admin SignIN](https://healus-assurance.web.app/#/admin/auth/signin)
-[Admin Reset Password](https://healus-assurance.web.app/#/admin/auth/reset-password)
+[Admin SignUP](https://healus-assurance.web.app/#/admin/auth/signup),
+[Admin SignIN](https://healus-assurance.web.app/#/admin/auth/signin),
+[Admin Reset Password](https://healus-assurance.web.app/#/admin/auth/reset-password),
 [Admin Logout](https://healus-assurance.web.app/#/admin)
 
 90% of [Healus Admin](https://healus-assurance.web.app/#/admin) actions are saved using [Pangea Secure Audit log](https://pangea.cloud/docs/api/audit).
