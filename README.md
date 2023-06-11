@@ -39,6 +39,6 @@ All this links Use Pangea API:
 [Admin Logout](https://healus-assurance.web.app/#/admin)
 
 96% of [Healus Admin](https://healus-assurance.web.app/#/admin) actions are saved using [Pangea Secure Audit log](https://pangea.cloud/docs/api/audit),
-and also when a customer subscribes to a package its logged as well.
+and also when a customer subscribes to a package, pauses a subscription package, cancels a subscription package or resumes a subscription package  its logged as well.
 
 Also both Customers and admin users can now use [Pangea User Intel](https://pangea.cloud/docs/api/user-intel) to find out if their email addresses have been exposed to any security breach
