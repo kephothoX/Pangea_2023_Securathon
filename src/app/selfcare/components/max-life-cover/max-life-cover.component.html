@@ -1,0 +1,70 @@
+<app-header></app-header>
+<section>
+  <mat-card class="mat-elevation-z5 subscription-card">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Out-patient cover upto Kshs 7000.00 per Day.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>In-patient cover upto Kshs 7000,000.00.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Dental Care.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Postnatal And Antenatal Care.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Emergency medical Ambulance & Airlift Services.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Pharmacy & Pharmacology related Services.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Free Cancer Screening Services.</h5>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <h5><mat-icon class="material-icons text-primary pr-2">check_small</mat-icon>Free and 24/7 Online Doctor consultation Services.</h5>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-card-content>
+    <mat-card-footer class="mat-elevation-z6">
+
+      <button mat-raised-button color="primary" class="text-whiter" (click)="subscribeWeekly()">
+        Subscribe for {{ weeklyAmount | currency : ' KES '}} Weekly
+      </button>
+
+      <button mat-raised-button color="primary" class="text-whiter" (click)="subscribeMonthly()">
+        Subscribe for {{ monthlyAmount | currency : ' KES '}} Monthly
+      </button>
+
+      <button mat-raised-button color="primary" class="text-whiter" (click)="subscribeAnnually()">
+        Subscribe for {{ annualAmount | currency : ' KES '}} Annually
+      </button>
+    </mat-card-footer>
+
+  </mat-card>
+</section>

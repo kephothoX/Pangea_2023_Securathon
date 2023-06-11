@@ -1,0 +1,252 @@
+<app-header></app-header>
+
+<section>
+  <mat-card>
+    <mat-card-title>
+      <h3><a routerLink="/selfcare/auth/signin">&nbsp; &nbsp;Already Signed Up</a></h3>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-horizontal-stepper [linear]="true" #stepper [animationDuration]="duration">
+        <mat-step [stepControl]="newSqUserForm">
+          <form [formGroup]="newSqUserForm">
+            <ng-template matStepLabel>Fill out your Basic Information</ng-template>
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>First Name </mat-label>
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+              <mat-hint align="end"></mat-hint>
+              <input type="text" matInput  formControlName = "given_name" placeholder="First Name">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Last Name </mat-label>
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+              <mat-hint align="end"></mat-hint>
+              <input type="text" matInput  formControlName = "family_name" placeholder="Last Name">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Email </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <input type="email" matInput email="true" formControlName="email_address" placeholder="Email Address" (change)="getEmailAddress($event)">
+              <mat-icon matPrefix  class="material-icons">mail_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-accordion class="matAccordion">
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-card-title>
+                      <h2 class="centered">Address</h2>
+                    </mat-card-title>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div formGroupName="address">
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Address Line 1 </mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <input type="text" matInput formControlName="address_line_1" placeholder="Address Line 1">
+                    <mat-icon matPrefix class="material-icons">info_outline</mat-icon>
+                  </mat-form-field>
+                  <div class="spacer"></div>
+
+
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Address Line 2 </mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <input type="text" matInput formControlName="address_line_2" placeholder="Address Line 2">
+                    <mat-icon matPrefix class="material-icons">info_outline</mat-icon>
+                  </mat-form-field>
+                  <div class="spacer"></div>
+
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Locality</mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <mat-icon matPrefix class="material-icons">info_outline</mat-icon>
+                    <input type="text" matInput formControlName="locality" placeholder="Locality">
+                  </mat-form-field>
+                  <div class="spacer"></div>
+
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Administrative District Level 1</mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <mat-icon matPrefix class="material-icons">info_outline</mat-icon>
+                    <input type="text" matInput formControlName="administrative_district_level_1"
+                      placeholder="Administrative District Level 1">
+                  </mat-form-field>
+                  <div class="spacer"></div>
+
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Postal Code</mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <mat-icon matPrefix class="material-icons">info_outline</mat-icon>
+                    <input type="text" matInput formControlName="postal_code" placeholder="Postal Code">
+                  </mat-form-field>
+                  <div class="spacer"></div>
+
+                  <mat-form-field appearance="outline" class="p-1">
+                    <mat-label>Country</mat-label>
+                    <mat-hint align="end"></mat-hint>
+                    <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+                    <mat-select formControlName="country">
+                      <mat-option *ngFor="let entry of Countries" [value]="entry.Country_Code_1" (click)="getCountryPrefix(entry.Phone_Prefix)">
+                        {{ entry.Country_Name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="spacer"></div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Company Name </mat-label>
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+              <mat-hint align="end"></mat-hint>
+              <input type="text" matInput  formControlName = "company_name" placeholder="Company Name">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Phone Number </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <span matPrefix>{{ Phone_Prefix }} </span>
+              <input type="tel" matInput tel="true" formControlName="phone_number" placeholder="Phone Number">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+          </form>
+
+          <mat-card-actions class="align-buttons-center">
+            <button mat-raised-button matStepperNext (click)="onSubmitSquareUser()">
+              <mat-icon class="material-icons">chevron_right</mat-icon>
+              Next
+            </button>
+          </mat-card-actions>
+        </mat-step>
+        <mat-step [stepControl]="addBillingInformation">
+          <ng-template matStepLabel>Add Billing Card</ng-template>
+          <mat-card class="p-2">
+            <form id="payment-form">
+              <div id="card-container"></div>
+              <div id="card-button" class="align-buttons-center p-2">
+                <button mat-raised-button color="primary" class="text-whiter" (click)="getPayment()">
+                  <mat-icon class="material-icons">attach_money</mat-icon>
+                  Pay 1.00 For Card Verification
+                </button>
+              </div>
+            </form>
+            <div id="payment-status-container"></div>
+            <mat-card-actions class="align-buttons-center">
+              <button mat-raised-button matStepperPrevious>
+                <mat-icon class="material-icons">chevron_left</mat-icon>
+                Back
+              </button>
+              <button mat-raised-button matStepperNext [disabled]="disable_next">
+                <mat-icon class="material-icons">chevron_right</mat-icon>
+                Next
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-step>
+
+        <mat-step [stepControl]="newUserCredentialsForm">
+          <form [formGroup] ="newUserCredentialsForm">
+            <ng-template matStepLabel>Fill out your Password With Email as Username</ng-template>
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Email </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <input type="email" matInput email="true" formControlName="email_address" [(ngModel)]="email_address" editable="false">
+              <mat-icon matPrefix  class="material-icons">mail_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+             <mat-form-field appearance="outline" class="p-1">
+              <mat-label>Password </mat-label>
+              <mat-hint align="end"></mat-hint><mat-icon matPrefix  class="material-icons">security</mat-icon>
+              <input type="password" matInput formControlName="password" placeholder="Password">
+            </mat-form-field>
+            <div class="spacer"></div>
+            <mat-card-actions class="align-buttons-center">
+              <button mat-raised-button matStepperPrevious>
+                <mat-icon class="material-icons">chevron_left</mat-icon>
+                Back
+              </button>
+              <button type="reset" mat-raised-button color="warn" class="text-white">
+                <mat-icon class="material-icons">cancel</mat-icon>
+                Clear
+              </button>
+              <button type="submit" mat-raised-button (click)="onSubmitUserCredentials()" matStepperNext>
+                <mat-icon class="material-icons">chevron_right</mat-icon>
+                Next (Is Email Verified?)
+              </button>
+            </mat-card-actions>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="mfaVerificationInitForm">
+          <ng-template matStepLabel>Verify Email</ng-template>
+          <h3>Open <span class="text-warn"> {{ email_address }} </span> click on Verify. If Verified, Press <button mat-raised-button color="primary" class="text-whiter" matStepperNext>
+              <mat-icon class="material-icons">chevron_right</mat-icon>
+              Next
+            </button> to Continue</h3>
+
+          <form [formGroup]="mfaVerificationInitForm">
+            <mat-form-field appearance="outline" class="p-1" [style.visibility]="visibility">
+              <mat-label>Email </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <input type="email" matInput email="true" formControlName="email" [(ngModel)]="email_address" editable="false">
+              <mat-icon matPrefix  class="material-icons">mail_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+          </form>
+          <mat-card-actions class="align-buttons-center">
+            <button mat-raised-button matStepperPrevious>
+              <mat-icon class="material-icons">chevron_left</mat-icon>
+              Back
+            </button>
+            <button mat-raised-button  matStepperNext>
+              <mat-icon class="material-icons">chevron_right</mat-icon>
+              Get OTP
+            </button>
+          </mat-card-actions>
+        </mat-step>
+        <mat-step [stepControl]="mfaVerificationForm">
+          <ng-template matStepLabel>OTP from {{ email_address }}</ng-template>
+
+          <form [formGroup]="mfaVerificationForm">
+            <mat-form-field appearance="outline" class="p-1">
+              <mat-label>OTP Code </mat-label>
+              <mat-hint align="end">
+                The OTP sent to {{ email_address }}
+                ***valid for 5 minutes ***
+              </mat-hint>
+              <input type="text" matInput formControlName="otp_code"  placeholder="389384">
+              <mat-icon matPrefix  class="material-icons">info_outline</mat-icon>
+            </mat-form-field>
+            <div class="spacer"></div>
+          </form>
+          <mat-card-actions class="align-buttons-center">
+            <button mat-raised-button matStepperPrevious>
+              <mat-icon class="material-icons">chevron_left</mat-icon>
+              Back
+            </button>
+            <button type="reset" mat-raised-button color="warn" class="text-white">
+              <mat-icon class="material-icons">cancel</mat-icon>
+              Clear
+            </button>
+            <button type="submit" mat-raised-button (click)="onSubmitOTP()" matStepperNext>
+              <mat-icon class="material-icons">lock_open</mat-icon>
+              Continue To Login
+            </button>
+          </mat-card-actions>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
+
+
