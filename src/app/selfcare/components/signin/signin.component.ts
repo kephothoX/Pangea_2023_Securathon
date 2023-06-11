@@ -51,7 +51,7 @@ export class SigninComponent implements OnInit {
     if (element) {
       // @ts-ignore
       google.accounts.id.initialize({
-        client_id: '630879666344-14rl98ful5m0ln3vvivhc5ffa8r2seu7.apps.googleusercontent.com',
+        client_id: '*******************************.apps.googleusercontent.com',
         callback: this.googleSignInResponse.bind(this),
         auto_select: false,
         cancel_on_tap_outside: true,
